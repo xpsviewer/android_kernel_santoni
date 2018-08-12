@@ -1,5 +1,4 @@
-
-/* Copyright (c) 2013-2014, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2013-2014, 2017-2018 The Linux Foundation. All rights reserved.
  * Copyright (C) 2018 XiaoMi, Inc.
  *
  * This program is free software; you can redistribute it and/or modify
@@ -29,10 +28,13 @@
 #define CDBG(fmt, args...) pr_err(fmt, ##args)
 
 #define LED_GPIO_FLASH_DRIVER_NAME		"qcom,leds-gpio-flash"
+
 #define LED_TRIGGER_DEFAULT		"none"
 
 #define GPIO_OUT_LOW          (0 << 1)
 #define GPIO_OUT_HIGH         (1 << 1)
+
+#define SEQ_NUM 2
 
 enum msm_flash_seq_type_t {
 	FLASH_EN,
@@ -172,7 +174,6 @@ int led_gpio_flash_probe(struct platform_device *pdev)
 			goto error;
 		}
 	}
-
 
 	flash_led->flash_now = of_property_read_u32(node, "qcom,flash-now", &flash_gpio_now);
 	if (flash_led->flash_now < 0) {
